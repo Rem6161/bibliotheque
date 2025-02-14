@@ -31,6 +31,12 @@
 	</properties>
 	<!-- Dependencies required for the project -->
 	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
 		<!-- Spring Boot Starter Web: To build web applications -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -48,6 +54,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<version>3.1.4</version>
+		</dependency>
+
 
 		<!-- H2 Database: In-memory database for development and testing -->
 		<dependency>
