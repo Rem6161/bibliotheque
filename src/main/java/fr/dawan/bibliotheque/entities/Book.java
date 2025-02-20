@@ -1,12 +1,14 @@
 package fr.dawan.bibliotheque.entities;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode.Exclude;
 import lombok.Getter;
@@ -21,6 +23,7 @@ import lombok.ToString;
 @ToString
 
 @Entity
+@Table(name = "books")
 public class Book extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 	
@@ -39,12 +42,17 @@ public class Book extends BaseEntity {
 	@Column(nullable = false)
 	private boolean ageRestriction;
 	
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length=15)
-	private Stock stock;
+   
+    @Column(nullable = false)
+	private boolean stock;
 	
 	@ManyToOne
 	@Exclude
 	private Author author;
+	
+	
+	@ManyToMany(mappedBy = "books")
+	@Exclude
+	private Set<Borrow> borrows = new HashSet<>();
 	
 }
