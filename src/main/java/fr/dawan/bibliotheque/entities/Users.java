@@ -33,7 +33,7 @@ public class Users extends BaseEntity {
 	@Column(nullable = false, length = 100)
 	private String firstName;
 	
-	@Column(name = "date_f_birth", nullable = false)
+	@Column(name = "date_of_birth", nullable = false)
 	private LocalDate dateOfBirth;
 	
 	@Column(unique = true, nullable = false)
@@ -43,9 +43,9 @@ public class Users extends BaseEntity {
 	private String adress;
 	
 	@Column(name = "phone_number", nullable = false)
-	private String phoneNumber;
+	private long phoneNumber;
 	
-	@Column(name = "is_an_adult", nullable = false)
+	@Column(columnDefinition = "TINYINT(1)", name = "is_an_adult", nullable = false)
 	private boolean isAnAdult;
 	
 	@OneToMany(mappedBy = "user")
