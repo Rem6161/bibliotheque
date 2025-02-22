@@ -6,6 +6,7 @@ import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -32,16 +33,16 @@ public class Author extends BaseEntity {
 	@Column(nullable = false, length = 100)
 	private String name;
 	
-	@Column(nullable = false, length = 100)
-	private String surname;
+	@Column(name = "first_name",nullable = false, length = 100)
+	private String firstName;
 	
 	@Column(name = "date_of_birth", nullable = false)
 	private LocalDate dateOfBirth;
 	
 	@Column(nullable = false, length = 50)
-	private String nationatlity;
+	private String nationality;
 	
-	
+	@Lob
 	@Column(nullable = false)
 	private String description;
 	

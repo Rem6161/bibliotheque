@@ -28,7 +28,7 @@ public class Book extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 	
 	@Column(nullable = false)
-	private int isbn;
+	private long isbn;
 	
 	@Column(nullable = false, length = 100)
 	private String name;
@@ -39,11 +39,11 @@ public class Book extends BaseEntity {
 	@Column(nullable = false)
 	private String summary;
 	
-	@Column(nullable = false)
+	@Column(columnDefinition = "TINYINT(1)", nullable = false)
 	private boolean ageRestriction;
 	
    
-    @Column(nullable = false)
+    @Column(columnDefinition = "TINYINT(1)", nullable = false)
 	private boolean stock;
 	
 	@ManyToOne
