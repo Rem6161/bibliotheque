@@ -26,7 +26,7 @@ public class RepositoryRunner implements CommandLineRunner {
 		
 		
 		System.out.println(bookRepository.count());
-		Book livreOpt = bookRepository.findById(1L).get();
+		Book livreOpt = bookRepository.findById(1L).orElse(null);
 		System.out.println(livreOpt);
 		List<Book> books = bookRepository.findAll();
 		
@@ -34,7 +34,9 @@ public class RepositoryRunner implements CommandLineRunner {
 			System.out.println(b);
 		}
 		
-		bookRepository.findByName("Book 1").forEach(b -> System.out.println(b));
+		bookRepository.findByName("Book 2").forEach(b -> System.out.println(b));
+
+
 	}
 
 }
