@@ -23,18 +23,21 @@ public class RepositoryRunner implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("\n ______ Repository Runner_____ \n");
+		System.out.println(bookRepository);
 		
+		/*
+		 * 		System.out.println(bookRepository.count());
+			Book livreOpt = bookRepository.findById(1L).orElse(null);
+			System.out.println(livreOpt);
 		
-		System.out.println(bookRepository.count());
-		Book livreOpt = bookRepository.findById(1L).orElse(null);
-		System.out.println(livreOpt);
+	  */
 		List<Book> books = bookRepository.findAll();
 		
 		for(var b : books) {
-			System.out.println(b);
+			System.out.println(b.getName());
 		}
-		
-		bookRepository.findByName("Book 2").forEach(b -> System.out.println(b));
+	
+		//bookRepository.findByName("Book 2").forEach(b -> System.out.println(b));
 
 
 	}

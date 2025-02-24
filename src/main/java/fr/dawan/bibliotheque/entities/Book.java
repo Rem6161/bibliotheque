@@ -50,17 +50,20 @@ public class Book extends BaseEntity {
 	
 	@ManyToOne
 	@Exclude
-	@JoinColumn(name = "auhtor_id")
+	//@JoinColumn(name = "id")
 	private Author author;
 	
 	
 	@ManyToMany//(mappedBy = "books")
 	@Exclude
-    @JoinTable(
+	/*
+	 @JoinTable(
             name = "book_borrow",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "borrow_id")
+            joinColumns = @JoinColumn(name = "id"),
+            inverseJoinColumns = @JoinColumn(name = "id")
         )
+	 */
+
 	private Set<Borrow> borrows = new HashSet<>();
 	
 }
