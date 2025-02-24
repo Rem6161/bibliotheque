@@ -14,7 +14,7 @@ import jakarta.transaction.Transactional;
 public interface BookRepository extends JpaRepository<Book, Long> {
 
 	 
-	List<Book> findByName(String name);
+	//List<Book> findByName(String name);
 
 
 

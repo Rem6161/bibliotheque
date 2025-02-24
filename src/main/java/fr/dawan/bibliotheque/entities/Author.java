@@ -45,8 +45,8 @@ public class Author extends BaseEntity {
 	@Column(nullable = false, length = 50)
 	private String nationality;
 	
-	@Lob
-	@Column(nullable = false)
+	
+	@Column(columnDefinition = "MEDIUMTEXT", nullable = false)
 	private String description;
 	
 	@Column(name = "number_of_books", nullable = false)
