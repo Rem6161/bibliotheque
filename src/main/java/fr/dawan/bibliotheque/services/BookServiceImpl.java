@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 
 import fr.dawan.bibliotheque.dtos.BookDto;
 import fr.dawan.bibliotheque.entities.Book;
@@ -15,7 +16,7 @@ import jakarta.validation.Valid;
 
 @Service
 @Transactional
-//@Validated
+@Validated
 public class BookServiceImpl implements IBookService {
 	
 	@Autowired
@@ -24,7 +25,7 @@ public class BookServiceImpl implements IBookService {
 	//private BookMapper mapper;
 
 	@Override
-	public BookDto getById(long id) {
+	public List<Book> getById(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -61,5 +62,10 @@ public class BookServiceImpl implements IBookService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	
+
+
 
 }
