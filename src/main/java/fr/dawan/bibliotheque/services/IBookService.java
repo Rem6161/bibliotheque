@@ -12,19 +12,21 @@ public interface IBookService {
 
 	//Page<BookDto> getAll(Pageable page);	
 	
-    BookDto getById(long id);
+    List<Book> getById(long id);
     
     List<Book> getByName(String name);
     
     List<Book> getAll();
     
+
     void deleteById(long id);
     
     BookDto create(@Valid  BookDto dto);
     
     BookDto update(@Valid  BookDto dto,long id);
     
-    /***
+    
+        /***
      * 
      * 
 	@Autowired
