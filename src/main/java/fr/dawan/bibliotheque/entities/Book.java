@@ -6,6 +6,8 @@ import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -48,11 +50,17 @@ public class Book extends BaseEntity {
 	
 	@ManyToOne
 	@Exclude
+	@JoinColumn(name = "auhtor_id")
 	private Author author;
 	
 	
-	@ManyToMany(mappedBy = "books")
+	@ManyToMany//(mappedBy = "books")
 	@Exclude
+    @JoinTable(
+            name = "book_borrow",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "borrow_id")
+        )
 	private Set<Borrow> borrows = new HashSet<>();
 	
 }

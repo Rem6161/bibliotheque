@@ -27,7 +27,7 @@ import lombok.ToString;
 @ToString
 
 @Entity
-@Table(name = "borrow")
+@Table(name = "borrows")
 public class Borrow extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
@@ -42,7 +42,7 @@ public class Borrow extends BaseEntity {
 	@Column(nullable = false, length = 15)
 	private Status status;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy = "borrows")
 	@Exclude
 	private Set<Book> books = new HashSet<>();
 	
