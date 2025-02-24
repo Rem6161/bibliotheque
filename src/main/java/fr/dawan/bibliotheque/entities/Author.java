@@ -2,10 +2,13 @@ package fr.dawan.bibliotheque.entities;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -49,9 +52,9 @@ public class Author extends BaseEntity {
 	@Column(name = "number_of_books", nullable = false)
 	private int bookNumbers;
 	
-	@OneToMany(mappedBy = "author")
-	private Set<Book> books = new HashSet<>();
-	
+	@OneToMany(mappedBy = "author",  cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	//private Set<Book> books = new HashSet<>();
+	private List<Book> books;
 	
 	
 	
