@@ -3,6 +3,7 @@ package fr.dawan.bibliotheque.services;
 
 import java.util.List;
 
+import fr.dawan.bibliotheque.mappers.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +11,6 @@ import org.springframework.validation.annotation.Validated;
 
 import fr.dawan.bibliotheque.dtos.BookDto;
 import fr.dawan.bibliotheque.entities.Book;
-//import fr.dawan.bibliotheque.mappers.BookMapper;
 import fr.dawan.bibliotheque.repositories.BookRepository;
 import jakarta.validation.Valid;
 
@@ -22,7 +22,7 @@ public class BookServiceImpl implements IBookService {
 	@Autowired
 	private BookRepository bookRepository;
 	
-	//private BookMapper mapper;
+	private BookMapper bookMapper;
 
 	@Override
 	public List<Book> getById(long id) {
@@ -47,8 +47,8 @@ public class BookServiceImpl implements IBookService {
 
 	@Override
 	public BookDto create(@Valid BookDto bDto) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return bookMapper.toDto(bookRepository.save(bookMapper.toEntity(bDto)));
 	}
 
 	@Override
