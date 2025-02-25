@@ -17,11 +17,12 @@ public interface IBookService {
     List<Book> getByName(String name);
     
     List<Book> getAll();
-    
+
+	public Book addBook(Book book);
 
     void deleteById(long id);
     
-    BookDto create(@Valid  BookDto dto);
+    BookDto create(@Valid  BookDto bDto);
     
     BookDto update(@Valid  BookDto dto,long id);
     

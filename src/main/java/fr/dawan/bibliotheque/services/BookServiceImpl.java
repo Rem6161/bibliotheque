@@ -46,13 +46,13 @@ public class BookServiceImpl implements IBookService {
 	}
 
 	@Override
-	public BookDto create(@Valid BookDto dto) {
+	public BookDto create(@Valid BookDto bDto) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public BookDto update(@Valid BookDto dto, long id) {
+	public BookDto update(@Valid BookDto bDto, long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -63,9 +63,12 @@ public class BookServiceImpl implements IBookService {
 		return null;
 	}
 
+	@Override
+	public Book addBook(Book book) {
+		Book result=bookRepository.saveAndFlush(book);
+		return result;
 
-	
-
+	}
 
 
 }
