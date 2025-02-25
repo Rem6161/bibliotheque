@@ -40,5 +40,7 @@ public class BookDto {
 	    private boolean stock;
 	    
 	    private AuthorDto author;
+
+		private byte[] image;
 	
 }
