@@ -59,8 +59,9 @@ public class BookServiceImpl implements IBookService {
 
 	@Override
 	public List<Book> getAll() {
+		List<Book> books = bookRepository.findAll();
 		// TODO Auto-generated method stub
-		return null;
+		return bookRepository.findAll();
 	}
 
 	@Override

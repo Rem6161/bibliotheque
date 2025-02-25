@@ -7,6 +7,8 @@ import org.springframework.data.domain.Pageable;
 import fr.dawan.bibliotheque.dtos.BookDto;
 import fr.dawan.bibliotheque.entities.Book;
 import jakarta.validation.Valid;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface IBookService {
 
@@ -25,9 +27,10 @@ public interface IBookService {
     BookDto create(@Valid  BookDto bDto);
     
     BookDto update(@Valid  BookDto dto,long id);
-    
-    
-        /***
+
+
+
+	/***
      * 
      * 
 	@Autowired

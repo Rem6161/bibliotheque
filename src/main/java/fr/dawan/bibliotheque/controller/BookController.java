@@ -3,6 +3,7 @@ package fr.dawan.bibliotheque.controller;
 import ch.qos.logback.core.CoreConstants;
 import fr.dawan.bibliotheque.dtos.BookDto;
 import fr.dawan.bibliotheque.entities.Book;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
@@ -56,7 +57,7 @@ public class BookController {
 		return bookService.addBook(book);
 
 	}
- 	 
+
 
  	 
  	 

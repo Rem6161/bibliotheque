@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -53,6 +54,7 @@ public class Author extends BaseEntity {
 	private int bookNumbers;
 	
 	@OneToMany(mappedBy = "author",  cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
 	//private Set<Book> books = new HashSet<>();
 	private List<Book> books;
 	
