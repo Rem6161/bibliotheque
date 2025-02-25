@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode.Exclude;
@@ -42,13 +43,16 @@ public class Book extends BaseEntity {
     @Column(columnDefinition = "TINYINT(1)", nullable = false)
 	private boolean stock;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@Exclude
+	//@ManyToOne(fetch = FetchType.LAZY)
+	//@Exclude
 	//@JoinColumn(name = "id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Author author;
 	
 	
-	@ManyToMany//(mappedBy = "books")
+	@ManyToMany(fetch = FetchType.LAZY)//(mappedBy = "books")
+	@JsonIgnore
 	@Exclude
 	/*
 	 @JoinTable(
