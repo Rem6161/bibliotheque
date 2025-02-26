@@ -47,15 +47,15 @@ public class Book extends BaseEntity {
 	//@ManyToOne(fetch = FetchType.LAZY)
 	//@Exclude
 
+
+	//
+	//
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonIgnore
 	@JoinColumn(name = "author_id", nullable = false)
 	private Author author;
 
 
-	@ManyToMany(fetch = FetchType.LAZY)//(mappedBy = "books")
-	@JsonIgnore
-	@Exclude
 	/*
 	 @JoinTable(
             name = "book_borrow",
@@ -63,7 +63,9 @@ public class Book extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "id")
         )
 	 */
-
+	@ManyToMany(fetch = FetchType.LAZY)//(mappedBy = "books")
+	@JsonIgnore
+	@Exclude
 	private Set<Borrow> borrows = new HashSet<>();
 	
 }

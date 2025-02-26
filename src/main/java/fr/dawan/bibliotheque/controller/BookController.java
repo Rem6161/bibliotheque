@@ -57,10 +57,10 @@ public class BookController {
 	}
 
 
-	@PostMapping(value = "/add")//, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/add", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
 	public Book addBook(@RequestBody Book book) {
 
-		System.out.println(book);
+		//System.out.println(book);
 		return bookService.addBook(book);
 
 	}
@@ -89,7 +89,15 @@ public class BookController {
 		dto.setSummary(summary);
 		return bookService.update(dto, id);
 	}
+
+
+	@DeleteMapping(value = "/{id}" )
+	public String deleteById(@PathVariable long id) {
+		bookService.deleteById(id);
+		return "L'id " + id + " est supprimé";
+	}
 }
+
 
 
 

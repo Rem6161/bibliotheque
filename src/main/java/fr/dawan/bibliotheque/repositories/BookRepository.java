@@ -18,6 +18,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 	 
 	  List<Book> findByNameLike(String name);
 
-	  //Page<Book> findByNameAndPublicationDate(String name, LocalDate publicationDate, Pageable pageable);
+	int removeById(long id);
+
+	//Page<Book> findByNameAndPublicationDate(String name, LocalDate publicationDate, Pageable pageable);
 
 }
