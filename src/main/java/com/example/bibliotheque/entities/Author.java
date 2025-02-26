@@ -1,28 +1,68 @@
 package com.example.bibliotheque.entities;
 
-import jakarta.persistence.*;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
-/**
- * Represents an Author entity in the application.
- */
+
 
 @Entity
-@Data // Generates getters, setters, toString, equals, and hashCode methods.
-@NoArgsConstructor // Generates a no-args constructor.
-@AllArgsConstructor // Generates a constructor with all arguments.
-@Builder // Generates a builder pattern for creating instances.
-public class Author {
-    @Id // Specifies the primary key of the entity.
-    @GeneratedValue(strategy = GenerationType.AUTO) // Auto-generates the primary key value.
-    private Long id; // Unique identifier for the author.
-    private String authorName; // Name of the author.
-    private String authorAddress; // Address of the author.
-    @OneToMany(mappedBy = "author")
+@NoArgsConstructor
+@AllArgsConstructor
+public class Author extends BaseEntity {
+
+    @NotNull(message = "")
+    private String name;
+
+    @NotNull(message = "")
+    private String firstName;
+
+    @NotNull(message = "")
+    private LocalDate dateOfBirth;
+
+    @NotNull(message = "")
+    private String nationality;
+
+    @NotNull(message = "")
+    private String description;
+
+//    @NotNull(message = "")
+//    @OneToMany(mappedBy = "author",  cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "author",  cascade = CascadeType.ALL)
     private List<Book> books;
+
+
+    public String getName() { return name; }
+
+    public void setName(String name) { this.name = name; }
+
+    public String getFirstName() { return firstName; }
+
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+
+    public LocalDate getDateOfBirth() { return dateOfBirth; }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) { this.dateOfBirth = dateOfBirth; }
+
+    public String getNationality() { return nationality; }
+
+    public void setNationality(String nationality) { this.nationality = nationality; }
+
+    public String getDescription() { return description; }
+
+    public void setDescription(String description) { this.description = description; }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) { this.books = books; }
+
 }
