@@ -1,6 +1,8 @@
 package fr.dawan.bibliotheque.dtos;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 
@@ -10,6 +12,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,12 +39,19 @@ public class BookDto {
 	    @Size(max = 500, message = "Summary cannot exceed 500 characters")
 	    private String summary;
 
+		@PastOrPresent
+		private LocalDate publicationDate;
+
+	@JsonProperty("ageRestriction")
+		@NotNull
 	    private boolean ageRestriction;
 
+		@JsonProperty("stock")
+		@NotNull
 	    private boolean stock;
-	    
-	    private AuthorDto author;
 
-		private byte[] image;
+		@NotNull
+		@Size(max=60)
+	    private AuthorDto author;
 	
 }

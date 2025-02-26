@@ -52,7 +52,7 @@ public class Author extends BaseEntity {
 	
 	@Column(name = "number_of_books", nullable = false)
 	private int bookNumbers;
-	
+
 	@OneToMany(mappedBy = "author",  cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonIgnore
 	//private Set<Book> books = new HashSet<>();

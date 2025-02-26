@@ -6,6 +6,7 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode.Exclude;
 import lombok.Getter;
@@ -45,12 +46,13 @@ public class Book extends BaseEntity {
 	
 	//@ManyToOne(fetch = FetchType.LAZY)
 	//@Exclude
-	//@JoinColumn(name = "id")
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
+	@JoinColumn(name = "author_id", nullable = false)
 	private Author author;
-	
-	
+
+
 	@ManyToMany(fetch = FetchType.LAZY)//(mappedBy = "books")
 	@JsonIgnore
 	@Exclude
