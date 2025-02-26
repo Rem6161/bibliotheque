@@ -1,11 +1,15 @@
 package fr.dawan.bibliotheque.services;
 
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import fr.dawan.bibliotheque.entities.exceptions.IdNotFoundException;
 import fr.dawan.bibliotheque.mappers.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
@@ -22,13 +26,20 @@ public class BookServiceImpl implements IBookService {
 	
 	@Autowired
 	private BookRepository bookRepository;
-	
+
+	@Autowired
 	private BookMapper bookMapper;
 
 	@Override
-	public List<Book> getById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public BookDto getById(long id) {
+		Optional<Book> bookOptional = bookRepository.findById(id);
+		if(bookOptional.isEmpty()) {
+			System.out.println(("id not found"));
+			return null;
+		}
+
+		Book book = bookOptional.get();
+		return bookMapper.toDto(book);
 	}
 
 	@Override
@@ -73,6 +84,12 @@ public class BookServiceImpl implements IBookService {
 		return result;
 
 	}
+/*
 
+	public Page<Book> getByName(String name, LocalDate publicationDate) {
+		Page<Book> books = bookRepository.findByNameAndPublicationDate(name, publicationDate, PageRequest.of(1, 3));
+		return books;
+	}
 
+ */
 }

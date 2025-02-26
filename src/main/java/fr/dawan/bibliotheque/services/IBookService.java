@@ -14,7 +14,7 @@ public interface IBookService {
 
 	//Page<BookDto> getAll(Pageable page);	
 	
-    List<Book> getById(long id);
+    BookDto getById(long id);
     
     List<Book> getByName(String name);
     
@@ -25,7 +25,7 @@ public interface IBookService {
     void deleteById(long id);
     
     BookDto create(@Valid  BookDto bDto);
-    
+
     BookDto update(@Valid  BookDto dto,long id);
 
 

@@ -36,7 +36,7 @@ public class BookController {
 	private ObjectMapper objectMapper;
 	
 	@GetMapping(value = "/{id:[0-4]}", produces =MediaType.APPLICATION_JSON_VALUE)
-	 public List<Book> getById(		 
+	 public BookDto getById(
 		@Parameter(description = "L``id de la marque", required = true)
 		 @PathVariable long id) {
 		 return bookService.getById(id);
@@ -59,7 +59,7 @@ public class BookController {
 
 	@PostMapping(value = "/add")//, consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
 	public Book addBook(@RequestBody Book book) {
-		//TODO Attention : A book should not be added without an author
+
 		System.out.println(book);
 		return bookService.addBook(book);
 
@@ -78,12 +78,12 @@ public class BookController {
 
 
 	 */
-	@PostMapping(value = "/{id}")
-	public BookDto updateSummary(@PathVariable long id , @RequestParam ("book") String summary) throws IOException {
-		log.info("Updating summary for book with id " + id);
+	@PutMapping (value = "/{id}/{summary}")
+	public BookDto updateSummary(@PathVariable long id ,@PathVariable String summary) throws IOException {
+			log.info("Updating summary for book with id " +id);
 		log.info("New summary = " + summary);
 
-		BookDto dto = (BookDto) bookService.getById(id);
+		BookDto dto = bookService.getById(id);
 
 
 		dto.setSummary(summary);
