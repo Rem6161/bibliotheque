@@ -18,7 +18,7 @@ public interface BookMapper extends GenericMapper<Book, BookDto>{
     @Mapping(source = "summary", target = "summary")
     @Mapping(source = "ageRestriction", target = "ageRestriction")
     @Mapping(source = "stock", target = "stock")
-    @Mapping(source = "author.id", target = "author.id")
+    @Mapping(source = "author", target = "author")
     @Override
     BookDto toDto(Book entity);
 
@@ -28,7 +28,7 @@ public interface BookMapper extends GenericMapper<Book, BookDto>{
     @Mapping(source = "summary", target = "summary")
     @Mapping(source = "ageRestriction", target = "ageRestriction")
     @Mapping(source = "stock", target = "stock")
-    @Mapping(source = "author.id", target = "author.id")
+    @Mapping(source = "author", target = "author")
     @Override
     Book toEntity(BookDto dto);
 
@@ -38,7 +38,7 @@ public interface BookMapper extends GenericMapper<Book, BookDto>{
     @Mapping(source = "summary", target = "summary")
     @Mapping(source = "ageRestriction", target = "ageRestriction")
     @Mapping(source = "stock", target = "stock")
-    @Mapping(source = "author.id", target = "author.id")
+    @Mapping(source = "author", target = "author")
     @Override
     void update(BookDto dto, @MappingTarget Book entity);
 

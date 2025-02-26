@@ -31,7 +31,7 @@ public class Book extends BaseEntity {
 	@Column(nullable = false, length = 100)
 	private String name;
 	
-	@Column(nullable = false, length = 100)
+	@Column(name = "publication_date",nullable = false, length = 100)
 	private LocalDate publicationDate;
 	
 	@Column(nullable = false)
@@ -47,7 +47,7 @@ public class Book extends BaseEntity {
 	//@ManyToOne(fetch = FetchType.LAZY)
 	//@Exclude
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonIgnore
 	@JoinColumn(name = "author_id", nullable = false)
 	private Author author;

@@ -1,5 +1,6 @@
 package fr.dawan.bibliotheque.dtos;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
@@ -42,7 +43,7 @@ public class BookDto {
 		@PastOrPresent
 		private LocalDate publicationDate;
 
-	@JsonProperty("ageRestriction")
+		@JsonProperty("ageRestriction")
 		@NotNull
 	    private boolean ageRestriction;
 
@@ -52,6 +53,7 @@ public class BookDto {
 
 		@NotNull
 		@Size(max=60)
+		@JsonManagedReference
 	    private AuthorDto author;
 	
 }

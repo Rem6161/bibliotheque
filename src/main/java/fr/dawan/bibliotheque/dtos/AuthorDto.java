@@ -2,6 +2,7 @@ package fr.dawan.bibliotheque.dtos;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
@@ -41,7 +42,7 @@ public class AuthorDto {
 	private String description;
 	
 	private long bookNumbers;
-	
+	@JsonManagedReference
 	private List<BookDto> books;
 	
 	
