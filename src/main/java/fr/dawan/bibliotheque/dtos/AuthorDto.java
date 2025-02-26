@@ -40,7 +40,7 @@ public class AuthorDto {
 	
 	private String description;
 	
-	private int bookNumbers;
+	private long bookNumbers;
 	
 	private List<BookDto> books;
 	

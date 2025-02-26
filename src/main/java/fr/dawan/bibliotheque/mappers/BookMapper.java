@@ -12,34 +12,34 @@ import org.mapstruct.MappingTarget;
 public interface BookMapper extends GenericMapper<Book, BookDto>{
 
 
-    @Mapping(source = "h", target = "")
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    //@Override
-    BookDto toEntity(Book entity);
+    @Mapping(source = "id", target = "id")
+    @Mapping(source = "name", target = "name")
+    @Mapping(source = "publicationDate", target = "publicationDate")
+    @Mapping(source = "summary", target = "summary")
+    @Mapping(source = "ageRestriction", target = "ageRestriction")
+    @Mapping(source = "stock", target = "stock")
+    @Mapping(source = "author.id", target = "author.id")
+    @Override
+    BookDto toDto(Book entity);
 
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    //@Override
-    BookDto toDto(BookDto dto);
+    @Mapping(source = "id", target = "id")
+    @Mapping(source = "name", target = "name")
+    @Mapping(source = "publicationDate", target = "publicationDate")
+    @Mapping(source = "summary", target = "summary")
+    @Mapping(source = "ageRestriction", target = "ageRestriction")
+    @Mapping(source = "stock", target = "stock")
+    @Mapping(source = "author.id", target = "author.id")
+    @Override
+    Book toEntity(BookDto dto);
 
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    @Mapping(source = "", target = "")
-    //@Override
+    @Mapping(source = "id", target = "id")
+    @Mapping(source = "name", target = "name")
+    @Mapping(source = "publicationDate", target = "publicationDate")
+    @Mapping(source = "summary", target = "summary")
+    @Mapping(source = "ageRestriction", target = "ageRestriction")
+    @Mapping(source = "stock", target = "stock")
+    @Mapping(source = "author.id", target = "author.id")
+    @Override
     void update(BookDto dto, @MappingTarget Book entity);
 
 }

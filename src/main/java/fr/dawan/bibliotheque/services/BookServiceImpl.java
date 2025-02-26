@@ -3,6 +3,7 @@ package fr.dawan.bibliotheque.services;
 
 import java.util.List;
 
+import fr.dawan.bibliotheque.entities.exceptions.IdNotFoundException;
 import fr.dawan.bibliotheque.mappers.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,8 +54,10 @@ public class BookServiceImpl implements IBookService {
 
 	@Override
 	public BookDto update(@Valid BookDto bDto, long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Book book = bookRepository.findById(id).orElseThrow(() -> new IdNotFoundException("Book with ID " + id + " not found"));
+		bookMapper.update(bDto, book);
+
+		return bookMapper.toDto(bookRepository.save(book));
 	}
 
 	@Override
