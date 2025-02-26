@@ -53,10 +53,7 @@ public class Author extends BaseEntity {
 	private int bookNumbers;
 
 	@OneToMany(mappedBy = "author",  cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	//private Set<Book> books = new HashSet<>();
+
 	private List<Book> books;
-	
-	
-	
-	
+
 }

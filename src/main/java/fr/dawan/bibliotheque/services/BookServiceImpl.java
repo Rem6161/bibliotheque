@@ -53,8 +53,9 @@ public class BookServiceImpl implements IBookService {
 
 	@Override
 	public void deleteById(long id) {
-		// TODO Auto-generated method stub
-
+		if(bookRepository.removeById (id) == 0) {
+			throw new IdNotFoundException();
+		}
 	}
 
 	@Override
@@ -80,7 +81,7 @@ public class BookServiceImpl implements IBookService {
 
 	@Override
 	public Book addBook(Book book) {
-		Book result=bookRepository.saveAndFlush(book);
+		Book result=bookRepository.save(book);
 		return result;
 
 	}
