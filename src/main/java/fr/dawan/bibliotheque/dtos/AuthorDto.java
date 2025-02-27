@@ -1,5 +1,6 @@
 package fr.dawan.bibliotheque.dtos;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -34,7 +35,7 @@ public class AuthorDto {
     @Size(max = 80)
 	private String firstName;
 	
-    
+    private LocalDate dateOfBirth;
     @NotNull
     @Size(max = 80)
 	private String nationality;

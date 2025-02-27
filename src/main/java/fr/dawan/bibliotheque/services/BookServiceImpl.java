@@ -81,7 +81,7 @@ public class BookServiceImpl implements IBookService {
 
 	@Override
 	public Book addBook(Book book) {
-		Book result=bookRepository.save(book);
+		Book result=bookRepository.saveAndFlush(book);
 		return result;
 
 	}
