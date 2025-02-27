@@ -1,16 +1,11 @@
 package fr.dawan.bibliotheque.controller;
 
-import ch.qos.logback.core.CoreConstants;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.dawan.bibliotheque.dtos.AuthorDto;
 import fr.dawan.bibliotheque.dtos.BookDto;
 import fr.dawan.bibliotheque.entities.Book;
-import org.springframework.data.repository.query.Param;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import java.io.IOException;
 
-import java.io.IOException;
 import java.util.List;
 
 import io.swagger.v3.oas.annotations.Parameter;
@@ -20,8 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 import fr.dawan.bibliotheque.services.IBookService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.server.ResponseStatusException;
 
 @Slf4j
 
@@ -34,7 +27,8 @@ public class BookController {
 
 	@Autowired
 	private ObjectMapper objectMapper;
-	
+
+	// find a book by id
 	@GetMapping(value = "/{id:[0-4]}", produces =MediaType.APPLICATION_JSON_VALUE)
 	 public BookDto getById(
 		@Parameter(description = "L``id de la marque", required = true)
@@ -43,7 +37,7 @@ public class BookController {
 
 	 }
 	
-	
+	// FInd a book by name
 	@GetMapping(value = "/{name:[A-Za-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
 	//@GetMapping(value = "/{name:[A-Za-z]+}")
 	public List<Book> getByName(@PathVariable String name) {
@@ -57,10 +51,10 @@ public class BookController {
 	}
 
 
-	@PostMapping(value = "/add", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/add")
 	public Book addBook(@RequestBody Book book) {
 
-		//System.out.println(book);
+		System.out.println(book);
 		return bookService.addBook(book);
 
 	}
@@ -78,19 +72,20 @@ public class BookController {
 
 
 	 */
-	@PutMapping (value = "/{id}/{summary}")
-	public BookDto updateSummary(@PathVariable long id ,@PathVariable String summary) throws IOException {
-			log.info("Updating summary for book with id " +id);
-		log.info("New summary = " + summary);
 
-		BookDto dto = bookService.getById(id);
+	// Update Dto (id and summary)
+	@PutMapping (value = "/update", consumes = "application/json", produces = "application/json")
+	public BookDto updateSummary(@RequestBody BookDto updatedBook) throws IOException {
+		log.info("Updating summary for book with id " + updatedBook.getId());
+		BookDto dto = bookService.getById(updatedBook.getId());
 
+		log.info("New summary = " + updatedBook.getSummary());
+		dto.setSummary(updatedBook.getSummary());
 
-		dto.setSummary(summary);
-		return bookService.update(dto, id);
+		return bookService.update(dto, dto.getId());
 	}
 
-
+// Delete by id
 	@DeleteMapping(value = "/{id}" )
 	public String deleteById(@PathVariable long id) {
 		bookService.deleteById(id);

@@ -13,31 +13,46 @@ public interface BookMapper extends GenericMapper<Book, BookDto>{
 
 
     @Mapping(source = "id", target = "id")
-    @Mapping(source = "name", target = "name")
-    @Mapping(source = "publicationDate", target = "publicationDate")
+
     @Mapping(source = "summary", target = "summary")
+    /* @Mapping(source = "name", target = "name")
+        @Mapping(source = "publicationDate", target = "publicationDate")
+
     @Mapping(source = "ageRestriction", target = "ageRestriction")
     @Mapping(source = "stock", target = "stock")
+     */
+
     @Mapping(source = "author", target = "author")
     @Override
     BookDto toDto(Book entity);
 
     @Mapping(source = "id", target = "id")
+    @Mapping(source = "summary", target = "summary")
+
+    /*
+
     @Mapping(source = "name", target = "name")
     @Mapping(source = "publicationDate", target = "publicationDate")
-    @Mapping(source = "summary", target = "summary")
+
     @Mapping(source = "ageRestriction", target = "ageRestriction")
     @Mapping(source = "stock", target = "stock")
+     */
     @Mapping(source = "author", target = "author")
     @Override
     Book toEntity(BookDto dto);
 
+
+    @Mapping(source = "summary", target = "summary")
+    /*
+
+
     @Mapping(source = "id", target = "id")
     @Mapping(source = "name", target = "name")
     @Mapping(source = "publicationDate", target = "publicationDate")
-    @Mapping(source = "summary", target = "summary")
+
     @Mapping(source = "ageRestriction", target = "ageRestriction")
     @Mapping(source = "stock", target = "stock")
+      */
     @Mapping(source = "author", target = "author")
     @Override
     void update(BookDto dto, @MappingTarget Book entity);

@@ -52,7 +52,7 @@ public class Book extends BaseEntity {
 	//
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonIgnore
-	@JoinColumn(name = "author_id", nullable = false)
+	@JoinColumn(name = "author_id", nullable = true)
 	private Author author;
 
 
