@@ -41,10 +41,6 @@ public class AuthorDto {
 	private String nationality;
 	
 	private String description;
-	
-	private long bookNumbers;
-	@JsonManagedReference
-	private List<BookDto> books;
-	
+
 	
 }
