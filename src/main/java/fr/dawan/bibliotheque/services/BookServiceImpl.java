@@ -1,15 +1,12 @@
 package fr.dawan.bibliotheque.services;
 
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import fr.dawan.bibliotheque.entities.exceptions.IdNotFoundException;
 import fr.dawan.bibliotheque.mappers.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
@@ -65,8 +62,8 @@ public class BookServiceImpl implements IBookService {
 	}
 
 	@Override
-	public BookDto update(@Valid BookDto bDto, long id) {
-		Book book = bookRepository.findById(id).orElseThrow(() -> new IdNotFoundException("Book with ID " + id + " not found"));
+	public BookDto update(BookDto bDto) {
+		Book book = bookRepository.findById(bDto.getId()).orElseThrow(() -> new IdNotFoundException("Book with ID " + bDto.getId() + " not found"));
 		bookMapper.update(bDto, book);
 
 		return bookMapper.toDto(bookRepository.save(book));
@@ -80,17 +77,30 @@ public class BookServiceImpl implements IBookService {
 	}
 
 	@Override
-	public Book addBook(Book book) {
-		Book result=bookRepository.saveAndFlush(book);
-		return result;
+	public BookDto addBook(BookDto bookDto) {
+		//Convertir le DTO passé en parametre en entité
+		// Parce que le repository travailles que avec les models
+		Book book = bookMapper.toEntity(bookDto);
+
+		//Utiliser book pour save en bdd
+		Book  savedBook = bookRepository.saveAndFlush(book);
+
+		//convertir en DTO
+		BookDto resultDto = bookMapper.toDto(savedBook);
+		return resultDto;
 
 	}
-/*
 
-	public Page<Book> getByName(String name, LocalDate publicationDate) {
-		Page<Book> books = bookRepository.findByNameAndPublicationDate(name, publicationDate, PageRequest.of(1, 3));
-		return books;
+	@Override
+	public BookDto updateBook(Long id, BookDto bookDto) {
+		return bookDto;
 	}
+	/*
 
- */
+		public Page<Book> getByName(String name, LocalDate publicationDate) {
+			Page<Book> books = bookRepository.findByNameAndPublicationDate(name, publicationDate, PageRequest.of(1, 3));
+			return books;
+		}
+
+	 */
 }
