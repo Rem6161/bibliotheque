@@ -20,6 +20,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
 	int removeById(long id);
 
+	//List<Book> findByName(String name);
 	//Page<Book> findByNameAndPublicationDate(String name, LocalDate publicationDate, Pageable pageable);
 
 }

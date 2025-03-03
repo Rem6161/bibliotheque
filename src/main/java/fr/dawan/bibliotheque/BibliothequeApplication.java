@@ -29,20 +29,20 @@ public class BibliothequeApplication implements CommandLineRunner {
 
 		
 	} 
- 	    @Autowired
-    	private AuthorRepository authorRepository;
- 	    
- 	   @Autowired
- 		private UserRepository userRepository;
- 		
- 		@Autowired
- 		private BorrowRepository borrowRepository;
- 		
- 		@Autowired
- 		private BookServiceImpl bookServiceImpl;
+	@Autowired
+	private AuthorRepository authorRepository;
 
-		 @Autowired
-		 private BookRepository bookRepository;
+   @Autowired
+	private UserRepository userRepository;
+
+	@Autowired
+	private BorrowRepository borrowRepository;
+
+	@Autowired
+	private BookServiceImpl bookServiceImpl;
+
+	 @Autowired
+	 private BookRepository bookRepository;
 
 	 @Override
 	    public void run(String... args) throws Exception {
@@ -57,32 +57,39 @@ public class BibliothequeApplication implements CommandLineRunner {
 				System.out.println(u.getName());
 			}
 
+			 System.out.println("--------book name by id");
+			 Book book = bookRepository.findById(25L).get();
+			 System.out.println( book.getName());
 
 
-			System.out.println("\n ______ Borrow Repository _____ \n");
-			List<Borrow> borrows = borrowRepository.findAll();
+				System.out.println("\n ______ Borrow Repository _____ \n");
+				List<Borrow> borrows = borrowRepository.findAll();
 
-			for(var bo : borrows) {
-				System.out.println(bo.getBorrowDate() + " , " + bo.getBorrowReturnDate());
-			}
+				for(var bo : borrows) {
+					System.out.println(bo.getBorrowDate() + " , " + bo.getBorrowReturnDate());
+				}
 
 
-			System.out.println("\\n ______ Author Repository _____ \\n");
-			List<Author> authors = authorRepository.findAll();
+				System.out.println("\\n ______ Author Repository _____ \\n");
+				List<Author> authors = authorRepository.findAll();
 
-			for(var a : authors) {
-				System.out.println(a.getName());
-			}
+				for(var a : authors) {
+					System.out.println(a.getName());
+				}
 
-			System.out.println("\n ________books runner start_____ \n");
 
-			List<Book> books1 = bookServiceImpl.getByName("Book 1");
-			for (var b : books1) {
-				System.out.println(b.getName());
 
-			}
 
-			System.out.println("\n ________end book repository______ \n");
+
+				System.out.println("\n ________books runner start_____ \n");
+
+				List<Book> books1 = bookServiceImpl.getByName("TEST BOOK");
+				for (var b : books1) {
+					System.out.println(b.getIsbn());
+
+				}
+
+				System.out.println("\n ________end book repository______ \n");
 
 
 
