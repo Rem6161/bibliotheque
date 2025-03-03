@@ -16,11 +16,12 @@ import fr.dawan.bibliotheque.entities.Book;
 public interface BookRepository extends JpaRepository<Book, Long> {
 
 	 
-	  List<Book> findByNameLike(String name);
+	List<Book> findByNameLike(String name);
 
 	int removeById(long id);
 
-	//List<Book> findByName(String name);
-	//Page<Book> findByNameAndPublicationDate(String name, LocalDate publicationDate, Pageable pageable);
+
+	Page<Book> findByPublicationDate(LocalDate publicationDate, Pageable page);
+
 
 }

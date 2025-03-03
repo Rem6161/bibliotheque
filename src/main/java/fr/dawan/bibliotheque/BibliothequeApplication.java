@@ -46,70 +46,73 @@ public class BibliothequeApplication implements CommandLineRunner {
 
 	 @Override
 	    public void run(String... args) throws Exception {
-	        System.out.println("Application started with CommandLineRunner!");
+		System.out.println("Application started with CommandLineRunner!");
 
 
-	        System.out.println("\n ______ User Repository _____ \n");
-			System.out.println(userRepository);
+		System.out.println("\n ______ User Repository _____ \n");
+		System.out.println(userRepository);
 
-			List<Users> users = userRepository.findAll();
-			for (var u : users) {
-				System.out.println(u.getName());
-			}
+		List<Users> users = userRepository.findAll();
+		for (var u : users) {
+			System.out.println(u.getName());
+		}
 
-			 System.out.println("--------book name by id");
-			 Book book = bookRepository.findById(25L).get();
-			 System.out.println( book.getName());
+		System.out.println("\n ______ Book Repository _____ \n");
+		List<Book> books = bookRepository.findAll();
 
-
-				System.out.println("\n ______ Borrow Repository _____ \n");
-				List<Borrow> borrows = borrowRepository.findAll();
-
-				for(var bo : borrows) {
-					System.out.println(bo.getBorrowDate() + " , " + bo.getBorrowReturnDate());
-				}
+		/*
 
 
-				System.out.println("\\n ______ Author Repository _____ \\n");
-				List<Author> authors = authorRepository.findAll();
-
-				for(var a : authors) {
-					System.out.println(a.getName());
-				}
-
-
-
+		for(var b : books) {
+			System.out.println(b);
+		}
+ */
+		System.out.println("--------book name by id");
+		Book book = bookRepository.findById(25L).get();
+		System.out.println( book.getName());
 
 
-				System.out.println("\n ________books runner start_____ \n");
+		System.out.println("\n ______ Borrow Repository _____ \n");
+		List<Borrow> borrows = borrowRepository.findAll();
 
-				List<Book> books1 = bookServiceImpl.getByName("TEST BOOK");
-				for (var b : books1) {
-					System.out.println(b.getIsbn());
+		for(var bo : borrows) {
+			System.out.println(bo.getBorrowDate() + " , " + bo.getBorrowReturnDate());
+		}
 
-				}
 
-				System.out.println("\n ________end book repository______ \n");
+		System.out.println("\\n ______ Author Repository _____ \\n");
+		List<Author> authors = authorRepository.findAll();
+
+		for(var a : authors) {
+			System.out.println(a.getName());
+		}
 
 
 
-			//---------------------------PAGINATION-------------------------
 
 
-/**
+		System.out.println("\n ________books runner start_____ \n");
 
-			System.out.println("\n ________ PAGINATION ______ \n");
+		List<Book> books1 = bookServiceImpl.getByName("TEST BOOK");
+		for (var b : books1) {
+			System.out.println(b.getIsbn());
+
+		}
+
+		System.out.println("\n ________end book repository______ \n");
 
 
 
-		 Sort sort = Sort.by("name").and(Sort.by(Sort.Direction.DESC, "publication_date"));
-		Page<Book> b1 = bookRepository.findByNameAndPublicationDate("Book 1" ,
-				LocalDate.of(2025, 02, 06),
-				PageRequest.of(1, 3));
+		System.out.println("-----Pagination");
 
-		b1.getContent().forEach(b -> System.out.println(b));
+		 Page<Book> b1 = bookRepository.findByPublicationDate(LocalDate.of(2025,02,13), PageRequest.of(0,3));
 
-		  */
-	    }
+	 	 System.out.print("Total Element " + b1.getTotalElements());
+		 System.out.println("Size " + b1.getSize());
+		 System.out.println("Total number of element" + b1.getNumberOfElements());
+
+		 b1.getContent().forEach(b -> System.out.print("Name " + b.getName()));
+
+	 }
 
 }
