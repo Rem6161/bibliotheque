@@ -43,7 +43,6 @@ public class BookServiceImpl implements IBookService {
 	@Transactional(readOnly = true)
 	public List<Book> getByName(String name){
 		List<Book> books = bookRepository.findByNameLike(name + "%");
-       // return books.stream().map(m -> mapper.toDto(m)).toList();
 		return books;
 		
 	}
@@ -95,12 +94,5 @@ public class BookServiceImpl implements IBookService {
 	public BookDto updateBook(Long id, BookDto bookDto) {
 		return bookDto;
 	}
-	/*
 
-		public Page<Book> getByName(String name, LocalDate publicationDate) {
-			Page<Book> books = bookRepository.findByNameAndPublicationDate(name, publicationDate, PageRequest.of(1, 3));
-			return books;
-		}
-
-	 */
 }

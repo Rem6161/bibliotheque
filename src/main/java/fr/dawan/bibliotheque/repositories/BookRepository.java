@@ -20,8 +20,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
 	int removeById(long id);
 
-
 	Page<Book> findByPublicationDate(LocalDate publicationDate, Pageable page);
 
 
+	List<Book> findByAuthorName(String authorName);
 }

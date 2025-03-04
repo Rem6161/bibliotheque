@@ -52,9 +52,15 @@ public class BibliothequeApplication implements CommandLineRunner {
 		System.out.println("\n ______ User Repository _____ \n");
 		System.out.println(userRepository);
 
+
 		List<Users> users = userRepository.findAll();
 		for (var u : users) {
 			System.out.println(u.getName());
+		}
+		 System.out.println("\n find user by date of birth \n");
+		List<Users> usersByDO = userRepository.findByDateOfBirth(LocalDate.of(2002, 02, 07));
+		for(var uba : usersByDO) {
+			System.out.println(uba.getName() + " " + uba.getAdress());
 		}
 
 		System.out.println("\n ______ Book Repository _____ \n");
@@ -66,10 +72,18 @@ public class BibliothequeApplication implements CommandLineRunner {
 		for(var b : books) {
 			System.out.println(b);
 		}
- */
+ 		*/
 		System.out.println("--------book name by id");
 		Book book = bookRepository.findById(25L).get();
 		System.out.println( book.getName());
+
+		System.out.println("FInd books by Author's name");
+
+		List<Book> booksByAuthor = bookRepository.findByAuthorName("Author 2");
+		for (var bba : booksByAuthor) {
+			System.out.println(bba.getName());
+		}
+
 
 
 		System.out.println("\n ______ Borrow Repository _____ \n");
@@ -80,15 +94,12 @@ public class BibliothequeApplication implements CommandLineRunner {
 		}
 
 
-		System.out.println("\\n ______ Author Repository _____ \\n");
+		System.out.println("\n ______ Author Repository _____ \n");
 		List<Author> authors = authorRepository.findAll();
 
 		for(var a : authors) {
 			System.out.println(a.getName());
 		}
-
-
-
 
 
 		System.out.println("\n ________books runner start_____ \n");
@@ -99,19 +110,16 @@ public class BibliothequeApplication implements CommandLineRunner {
 
 		}
 
-		System.out.println("\n ________end book repository______ \n");
-
-
 
 		System.out.println("-----Pagination");
 
-		 Page<Book> b1 = bookRepository.findByPublicationDate(LocalDate.of(2025,02,13), PageRequest.of(0,3));
+		 Page<Book> b1 = bookRepository.findByPublicationDate(LocalDate.of(2024,02,6), PageRequest.of(0,5));
 
-	 	 System.out.print("Total Element " + b1.getTotalElements());
+	 	 System.out.println("Total Element " + b1.getTotalElements());
 		 System.out.println("Size " + b1.getSize());
-		 System.out.println("Total number of element" + b1.getNumberOfElements());
+		 System.out.println("Total number of element " + b1.getNumberOfElements());
 
-		 b1.getContent().forEach(b -> System.out.print("Name " + b.getName()));
+		 b1.getContent().forEach(b -> System.out.println("Name " + b.getName()));
 
 	 }
 
