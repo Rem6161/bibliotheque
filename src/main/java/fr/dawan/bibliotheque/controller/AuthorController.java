@@ -36,4 +36,8 @@ public class AuthorController {
         return authorService.getById(id);
     }
 
+    @GetMapping(value = "/author-name/{name:[A-Za-z]+}")
+    public  List<Author> getByName(@PathVariable String name) {
+        return authorService.getByName(name);
+    }
 }

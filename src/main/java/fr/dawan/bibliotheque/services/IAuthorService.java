@@ -20,7 +20,9 @@ public interface IAuthorService {
 
 	
 	Author getById(long id);
-    /*
+
+	List<Author> getByName(String name);
+	/*
 
      Page<AuthorDto> getAll(Pageable page);
     List<AuthorDto> getByName(String name);

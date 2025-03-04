@@ -28,7 +28,13 @@ public class AuthorServiceImpl implements IAuthorService {
     public Author getById(long id) {
         Author authors = authorRepository.findById(id).get();
         return authors;
-        // simply return authorRepository.findById(id).get();
+        // OR simply return authorRepository.findById(id).get();
     }
 
+    @Override
+    @Transactional
+    public List<Author> getByName(String name) {
+        List<Author> authors = authorRepository.findByName(name + "%");
+        return authors;
+    }
 }

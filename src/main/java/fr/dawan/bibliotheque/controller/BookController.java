@@ -42,7 +42,6 @@ public class BookController {
 	
 	// FInd a book by name
 	@GetMapping(value = "/{name:[A-Za-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-	//@GetMapping(value = "/{name:[A-Za-z]+}")
 	public List<Book> getByName(@PathVariable String name) {
 		return bookService.getByName(name);
 	}
