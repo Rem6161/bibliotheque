@@ -61,45 +61,17 @@ public class BookController {
 		return bookService.addBook(bookDto);
 
 	}
+	@PutMapping (value = "/update")//, consumes = "application/json", produces = "application/json")
+	public BookDto updateBook(@RequestBody BookDto updateBook) throws IOException {
+		log.info("Updating summary for book with id " + updateBook.getId());
+		//BookDto dto = bookService.getById(updateBook.getId());
+		log.info("New summary = " + updateBook.getSummary());
+		//dto.setSummary(updateBook.getSummary());
+		return bookService.update(updateBook);
 
-	/*
-
-
-@PostMapping(value = "/booksummery")
-	public BookDto createWithSummary(@RequestParam("book") String bookDtoStr) throws IOException {
-		BookDto dto = objectMapper.readValue(bookDtoStr, BookDto.class);
-
-		dto.setSummary(dto.getSummary());
-		return bookService.create(dto);
 	}
-*/
 
-/*
-        @PutMapping(value = "/{id}")
-        public ResponseEntity<BookDto> updateBook(@PathVariable Long id, @RequestBody BookDto bookDto) {
-			BookDto updateBook = bookService.updateBook(id, bookDto);
-
-			return ResponseEntity.ok(updateBook);
-		}
-
-        // Update Dto (id and summary)
-
-*/
-
-        @PutMapping (value = "/update")//, consumes = "application/json", produces = "application/json")
-        public BookDto updateBook(@RequestBody BookDto updateBook) throws IOException {
-            log.info("Updating summary for book with id " + updateBook.getId());
-            //BookDto dto = bookService.getById(updateBook.getId());
-
-
-			log.info("New summary = " + updateBook.getSummary());
-            //dto.setSummary(updateBook.getSummary());
-
-            return bookService.update(updateBook);
-
-        }
-
-// Delete by id
+	// Delete by id
 	@DeleteMapping(value = "/{id}" )
 	public String deleteById(@PathVariable long id) {
 		bookService.deleteById(id);
