@@ -3,6 +3,7 @@ package fr.dawan.bibliotheque.dtos;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
@@ -35,15 +36,18 @@ public class AuthorDto {
     @NotNull(message = "Author first name cannot be null")
     @Size(max = 80)
 	private String firstName;
-	
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
+
     @NotNull
     @Size(max = 80)
 	private String nationality;
-	
+
+    @NotNull
 	private String description;
 
-
+    @NotNull
     private int bookNumbers;
 	
 }
