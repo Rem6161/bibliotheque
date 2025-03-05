@@ -5,12 +5,10 @@ import fr.dawan.bibliotheque.entities.Author;
 import fr.dawan.bibliotheque.entities.exceptions.IdNotFoundException;
 import fr.dawan.bibliotheque.mappers.AuthorMapper;
 import fr.dawan.bibliotheque.repositories.AuthorRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -61,6 +59,7 @@ public class AuthorServiceImpl implements IAuthorService {
     }
 
 
+    //Update an author with id
     @Override
     public AuthorDto updateAuthor(AuthorDto  authorDto) {
 
@@ -70,4 +69,16 @@ public class AuthorServiceImpl implements IAuthorService {
         authorMapper.update(authorDto, author);
         return authorMapper.toDto(authorRepository.save(author));
     }
+
+
+    //Delete an author from database using his id
+    @Override
+    public void deleteById(long id) {
+        if(authorRepository.removeById(id) == 0) {
+            throw new IdNotFoundException();
+        }
+
+    }
+
+
 }

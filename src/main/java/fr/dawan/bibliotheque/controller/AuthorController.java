@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.dawan.bibliotheque.dtos.AuthorDto;
 import fr.dawan.bibliotheque.entities.Author;
 import fr.dawan.bibliotheque.services.IAuthorService;
+import fr.dawan.bibliotheque.services.IBookService;
 import org.springframework.http.MediaType;
 
 import java.util.List;
@@ -55,7 +56,14 @@ public class AuthorController {
     @PutMapping(value = "/update-author/{id}")
     public AuthorDto updateAuthor(@RequestBody AuthorDto updateAuthor) {
 
-
         return authorService.updateAuthor(updateAuthor);
+    }
+
+    // to delete an author you should first understand the use of cascade on @OneToMany
+    // in our case it's in Author entity (cascade = CascadeType.ALL)
+    @DeleteMapping(value = "/delete-author/{id}")
+    public String deleteById(@PathVariable long id) {
+        authorService.deleteById(id);
+        return "l'Id " + id + "est supprimé";
     }
 }
