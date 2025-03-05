@@ -26,6 +26,9 @@ public interface IAuthorService {
 	AuthorDto addAuthor(AuthorDto authorDto);
 
 	AuthorDto updateAuthor(AuthorDto authorDto);
+
+	void deleteById(long id);
+
 	/*
 
      Page<AuthorDto> getAll(Pageable page);
