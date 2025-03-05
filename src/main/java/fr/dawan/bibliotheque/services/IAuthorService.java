@@ -22,6 +22,8 @@ public interface IAuthorService {
 	Author getById(long id);
 
 	List<Author> getByName(String name);
+
+	AuthorDto addAuthor(AuthorDto authorDto);
 	/*
 
      Page<AuthorDto> getAll(Pageable page);

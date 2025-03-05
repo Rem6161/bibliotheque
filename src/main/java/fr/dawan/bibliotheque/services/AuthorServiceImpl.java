@@ -1,5 +1,6 @@
 package fr.dawan.bibliotheque.services;
 
+import fr.dawan.bibliotheque.dtos.AuthorDto;
 import fr.dawan.bibliotheque.entities.Author;
 import fr.dawan.bibliotheque.mappers.AuthorMapper;
 import fr.dawan.bibliotheque.repositories.AuthorRepository;
@@ -33,11 +34,28 @@ public class AuthorServiceImpl implements IAuthorService {
         // OR simply return authorRepository.findById(id).get();
     }
 
+    //Get author by name
     @Override
     @Transactional
     public List<Author> getByName(String name) {
         List<Author> authors = authorRepository.findByNameLike(name + "%");
 
         return authors;
+    }
+
+
+    //Add (POST method) an author to the database
+    public AuthorDto addAuthor(AuthorDto authorDto) {
+
+        //Convert a Dto to en Entity
+        Author author = authorMapper.toEntity(authorDto);
+
+        //Use the Entity Author to save in the database
+        Author saveAuthor = authorRepository.saveAndFlush(author);
+
+        //Convert the saved Entity back to a Dto
+        AuthorDto resultDto = authorMapper.toDto(saveAuthor);
+
+        return  resultDto;
     }
 }
