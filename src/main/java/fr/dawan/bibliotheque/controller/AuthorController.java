@@ -50,4 +50,12 @@ public class AuthorController {
         return authorService.addAuthor(authorDto);
     }
 
+    //Update an Author
+
+    @PutMapping(value = "/update-author/{id}")
+    public AuthorDto updateAuthor(@RequestBody AuthorDto updateAuthor) {
+
+
+        return authorService.updateAuthor(updateAuthor);
+    }
 }

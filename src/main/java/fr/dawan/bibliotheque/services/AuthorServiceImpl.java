@@ -2,6 +2,7 @@ package fr.dawan.bibliotheque.services;
 
 import fr.dawan.bibliotheque.dtos.AuthorDto;
 import fr.dawan.bibliotheque.entities.Author;
+import fr.dawan.bibliotheque.entities.exceptions.IdNotFoundException;
 import fr.dawan.bibliotheque.mappers.AuthorMapper;
 import fr.dawan.bibliotheque.repositories.AuthorRepository;
 import org.springframework.http.HttpStatus;
@@ -57,5 +58,16 @@ public class AuthorServiceImpl implements IAuthorService {
         AuthorDto resultDto = authorMapper.toDto(saveAuthor);
 
         return  resultDto;
+    }
+
+
+    @Override
+    public AuthorDto updateAuthor(AuthorDto  authorDto) {
+
+        Author author = authorRepository.findById(authorDto.getId())
+                .orElseThrow(() -> new IdNotFoundException("Author with " + authorDto.getId() + " not found"));
+
+        authorMapper.update(authorDto, author);
+        return authorMapper.toDto(authorRepository.save(author));
     }
 }
