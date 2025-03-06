@@ -24,4 +24,9 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
 
 	List<Book> findByAuthorName(String authorName);
+
+
 }
+src/main/java/fr/dawan/bibliotheque/BibliothequeApplication.java
+src/main/java/fr/dawan/bibliotheque/repositories/AuthorRepository.java
+src/main/java/fr/dawan/bibliotheque/repositories/BookRepository.java
