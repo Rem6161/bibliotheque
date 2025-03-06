@@ -111,7 +111,7 @@ public class BibliothequeApplication implements CommandLineRunner {
 		}
 
 
-		System.out.println("-----Pagination");
+		System.out.println("-----Pagination - Book");
 
 		 Page<Book> b1 = bookRepository.findByPublicationDate(LocalDate.of(2024,02,6), PageRequest.of(0,5));
 
@@ -121,6 +121,15 @@ public class BibliothequeApplication implements CommandLineRunner {
 
 		 b1.getContent().forEach(b -> System.out.println("Name " + b.getName()));
 
+
+		 Page<Author> a = authorRepository.findByBookNumbers( 15, PageRequest.of(0, 8));
+		 System.out.println("Total Elements " + a.getTotalElements());
+		 System.out.println("Total size " + a.getSize());
+		 System.out.println("Content " + a.getContent());
+			a.getContent().forEach(aut -> System.out.println("Author name " + aut.getName()));
 	 }
+
+
+
 
 }
