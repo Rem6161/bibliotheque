@@ -12,4 +12,6 @@ public interface IBorrowService {
     Borrow getById(long id);
 
     List<Borrow> getByBorrowDate(LocalDate borrowDate);
+
+    List<Borrow> getByBorrowReturnDate(LocalDate borrowReturnDate);
 }

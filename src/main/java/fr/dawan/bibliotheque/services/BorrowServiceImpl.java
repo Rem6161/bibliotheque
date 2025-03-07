@@ -36,5 +36,11 @@ public class BorrowServiceImpl implements IBorrowService{
         return borrowRepository.getByBorrowDate(borrowDate);
     }
 
+    @Override
+    @Transactional
+    public List<Borrow> getByBorrowReturnDate(LocalDate borrowReturnDate) {
+        return borrowRepository.findByBorrowReturnDate(borrowReturnDate);
+    }
+
 
 }
