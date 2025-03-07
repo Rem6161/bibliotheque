@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import fr.dawan.bibliotheque.repositories.BookRepository;
+import jakarta.persistence.Tuple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -101,6 +102,12 @@ public class BibliothequeApplication implements CommandLineRunner {
 			System.out.println(a.getName());
 		}
 
+		System.out.println("----find author using book name---------");
+		Book bookN = bookRepository.findAllByName("ByAuthor");
+
+		System.out.println("Author : " + book.getAuthor().getName());
+
+
 
 		System.out.println("\n ________books runner start_____ \n");
 
@@ -138,7 +145,7 @@ public class BibliothequeApplication implements CommandLineRunner {
 
 		 borrows1.forEach(borrow -> System.out.println(borrow.getBorrowDate()));
 
-		 //borrows1.forEach(borrow -> System.out.println(borrow.getBooks()));
+//		 borrows1.forEach(borrow -> System.out.println(borrow.getBooks()));
 
 	 }
 
