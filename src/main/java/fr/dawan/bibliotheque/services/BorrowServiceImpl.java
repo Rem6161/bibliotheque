@@ -1,6 +1,7 @@
 package fr.dawan.bibliotheque.services;
 
 import fr.dawan.bibliotheque.entities.Borrow;
+import fr.dawan.bibliotheque.entities.exceptions.IdNotFoundException;
 import fr.dawan.bibliotheque.mappers.BorrowMapper;
 import fr.dawan.bibliotheque.repositories.BorrowRepository;
 import jakarta.transaction.Transactional;
@@ -40,6 +41,14 @@ public class BorrowServiceImpl implements IBorrowService{
     @Transactional
     public List<Borrow> getByBorrowReturnDate(LocalDate borrowReturnDate) {
         return borrowRepository.findByBorrowReturnDate(borrowReturnDate);
+    }
+
+
+    @Override
+    public void deleteById(long id) {
+        if(borrowRepository.removeById(id) == 0){
+            throw new IdNotFoundException();
+        }
     }
 
 

@@ -15,4 +15,6 @@ public interface BorrowRepository extends JpaRepository<Borrow, Long> {
 
     List<Borrow> findByBorrowReturnDate(LocalDate borrowReturnDate);
 
+    int removeById(long id);
+
 }

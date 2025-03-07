@@ -41,5 +41,11 @@ public class BorrowsController {
         return borrowService.getByBorrowReturnDate(borrowReturnDate);
     }
 
+    @DeleteMapping(value = "/delete-borrow/{id}")
+    public String deleteById(@PathVariable long id) {
+        borrowService.deleteById(id);
+        return "L'id : " + id + " est bien supprimé";
+
+    }
 
 }
