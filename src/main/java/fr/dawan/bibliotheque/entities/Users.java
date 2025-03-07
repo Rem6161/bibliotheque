@@ -47,10 +47,12 @@ public class Users extends BaseEntity {
 	
 	@Column(columnDefinition = "TINYINT(1)", name = "is_an_adult", nullable = false)
 	private boolean isAnAdult;
-	
-	@OneToMany(mappedBy = "user")
+	/*
+		@OneToMany(mappedBy = "user")
 	@Exclude
 	private Set<Borrow> borrows = new HashSet<>();
+	 */
+
 	
 	
 	

@@ -27,6 +27,3 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
 
 }
-src/main/java/fr/dawan/bibliotheque/BibliothequeApplication.java
-src/main/java/fr/dawan/bibliotheque/repositories/AuthorRepository.java
-src/main/java/fr/dawan/bibliotheque/repositories/BookRepository.java
