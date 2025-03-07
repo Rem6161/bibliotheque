@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -26,6 +27,13 @@ public class BorrowServiceImpl implements IBorrowService{
     public Borrow getById(long id) {
         Borrow borrow = borrowRepository.findById(id).get();
         return borrow;
+    }
+
+
+    @Override
+    @Transactional
+    public List<Borrow> getByBorrowDate(LocalDate borrowDate) {
+        return borrowRepository.getByBorrowDate(borrowDate);
     }
 
 

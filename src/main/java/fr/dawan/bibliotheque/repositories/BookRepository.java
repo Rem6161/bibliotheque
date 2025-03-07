@@ -25,5 +25,5 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
 	List<Book> findByAuthorName(String authorName);
 
-
+	Book findAllByName(String name);
 }
