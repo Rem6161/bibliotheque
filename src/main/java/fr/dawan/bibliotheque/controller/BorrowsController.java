@@ -36,5 +36,10 @@ public class BorrowsController {
         return borrowService.getByBorrowDate(borrowDate);
     }
 
+    @GetMapping(value = "/return-date")
+    public List<Borrow> getByReturnDate(@RequestParam LocalDate borrowReturnDate) {
+        return borrowService.getByBorrowReturnDate(borrowReturnDate);
+    }
+
 
 }
