@@ -1,5 +1,6 @@
 package fr.dawan.bibliotheque.services;
 
+import fr.dawan.bibliotheque.dtos.BorrowDto;
 import fr.dawan.bibliotheque.entities.Borrow;
 import fr.dawan.bibliotheque.entities.exceptions.IdNotFoundException;
 import fr.dawan.bibliotheque.mappers.BorrowMapper;
@@ -41,6 +42,19 @@ public class BorrowServiceImpl implements IBorrowService{
     @Transactional
     public List<Borrow> getByBorrowReturnDate(LocalDate borrowReturnDate) {
         return borrowRepository.findByBorrowReturnDate(borrowReturnDate);
+    }
+
+    @Override
+    @Transactional
+    public BorrowDto addBorrow(BorrowDto borrowDto) {
+
+        Borrow borrow = borrowMapper.toEntity(borrowDto);
+
+        Borrow saveBorrow = borrowRepository.saveAndFlush(borrow);
+
+        BorrowDto updateDto = borrowMapper.toDto(saveBorrow);
+
+        return updateDto;
     }
 
 
