@@ -1,5 +1,6 @@
 package fr.dawan.bibliotheque.services;
 
+import fr.dawan.bibliotheque.dtos.BorrowDto;
 import fr.dawan.bibliotheque.entities.Borrow;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,8 @@ public interface IBorrowService {
     List<Borrow> getByBorrowDate(LocalDate borrowDate);
 
     List<Borrow> getByBorrowReturnDate(LocalDate borrowReturnDate);
+
+    BorrowDto addBorrow(BorrowDto borrowDto);
 
     void deleteById(long id);
 }

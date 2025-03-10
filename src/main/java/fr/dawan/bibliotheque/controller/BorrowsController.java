@@ -2,6 +2,7 @@ package fr.dawan.bibliotheque.controller;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.dawan.bibliotheque.dtos.BorrowDto;
 import fr.dawan.bibliotheque.entities.Borrow;
 import fr.dawan.bibliotheque.services.BorrowServiceImpl;
 import fr.dawan.bibliotheque.services.IBorrowService;
@@ -39,6 +40,12 @@ public class BorrowsController {
     @GetMapping(value = "/return-date")
     public List<Borrow> getByReturnDate(@RequestParam LocalDate borrowReturnDate) {
         return borrowService.getByBorrowReturnDate(borrowReturnDate);
+    }
+
+    @PostMapping(value = "/add-borrow")
+    public BorrowDto addBorrow(@RequestBody BorrowDto borrowDto) {
+
+        return borrowService.addBorrow(borrowDto);
     }
 
     @DeleteMapping(value = "/delete-borrow/{id}")
