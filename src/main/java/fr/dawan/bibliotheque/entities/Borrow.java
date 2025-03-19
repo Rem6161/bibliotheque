@@ -42,9 +42,9 @@ public class Borrow extends BaseEntity {
 	@Column(nullable = false, length = 15)
 	private Status status;
 	
-	@ManyToMany(mappedBy = "borrows")
-	@Exclude
-	private Set<Book> books = new HashSet<>();
+//	@ManyToMany(mappedBy = "borrows")
+//	@Exclude
+//	private Set<Book> books = new HashSet<>();
 	
 	@ManyToOne
 	@Exclude

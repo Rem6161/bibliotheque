@@ -18,7 +18,7 @@ public interface BorrowMapper extends GenericMapper<Borrow, BorrowDto>{
     @Mapping(source = "borrowDate", target = "borrowDate")
     @Mapping(source = "borrowReturnDate", target = "borrowReturnDate")
     @Mapping(source = "status", target = "status")
-    @Mapping(source = "books", target = "books")
+    //@Mapping(source = "books", target = "books")
     @Mapping(source = "user", target = "user")
     BorrowDto toDto(Borrow entity);
 
@@ -27,7 +27,7 @@ public interface BorrowMapper extends GenericMapper<Borrow, BorrowDto>{
     @Mapping(source = "borrowDate", target = "borrowDate")
     @Mapping(source = "borrowReturnDate", target = "borrowReturnDate")
     @Mapping(source = "status", target = "status")
-    @Mapping(source = "books", target = "books")
+    //@Mapping(source = "books", target = "books")
     @Mapping(source = "user", target = "user")
     Borrow toEntity(BorrowDto dto);
 
@@ -36,7 +36,7 @@ public interface BorrowMapper extends GenericMapper<Borrow, BorrowDto>{
     @Mapping(source = "borrowDate", target = "borrowDate")
     @Mapping(source = "borrowReturnDate", target = "borrowReturnDate")
     @Mapping(source = "status", target = "status")
-    @Mapping(source = "books", target = "books")
+    //@Mapping(source = "books", target = "books")
     @Mapping(source = "user", target = "user")
     void update(BorrowDto dto, @MappingTarget Borrow entity);
 

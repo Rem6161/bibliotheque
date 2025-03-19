@@ -28,12 +28,12 @@ public class BibliothequeApplication implements CommandLineRunner {
 	public static void main(String[] args) {
 		SpringApplication.run(BibliothequeApplication.class, args);
 
-		
-	} 
+
+	}
 	@Autowired
 	private AuthorRepository authorRepository;
 
-   @Autowired
+	@Autowired
 	private UserRepository userRepository;
 
 	@Autowired
@@ -42,11 +42,11 @@ public class BibliothequeApplication implements CommandLineRunner {
 	@Autowired
 	private BookServiceImpl bookServiceImpl;
 
-	 @Autowired
-	 private BookRepository bookRepository;
+	@Autowired
+	private BookRepository bookRepository;
 
-	 @Override
-	    public void run(String... args) throws Exception {
+	@Override
+	public void run(String... args) throws Exception {
 		System.out.println("Application started with CommandLineRunner!");
 
 
@@ -58,7 +58,7 @@ public class BibliothequeApplication implements CommandLineRunner {
 		for (var u : users) {
 			System.out.println(u.getName());
 		}
-		 System.out.println("\n find user by date of birth \n");
+		System.out.println("\n find user by date of birth \n");
 		List<Users> usersByDO = userRepository.findByDateOfBirth(LocalDate.of(2002, 02, 07));
 		for(var uba : usersByDO) {
 			System.out.println(uba.getName() + " " + uba.getAdress());
@@ -75,7 +75,7 @@ public class BibliothequeApplication implements CommandLineRunner {
 		}
  		*/
 		System.out.println("--------book name by id");
-		Book book = bookRepository.findById(25L).get();
+		Book book = bookRepository.findById(9L).get();
 		System.out.println( book.getName());
 
 		System.out.println("FInd books by Author's name");
@@ -120,34 +120,34 @@ public class BibliothequeApplication implements CommandLineRunner {
 
 		System.out.println("-----Pagination - Book");
 
-		 Page<Book> b1 = bookRepository.findByPublicationDate(LocalDate.of(2024,02,6), PageRequest.of(0,5));
+		Page<Book> b1 = bookRepository.findByPublicationDate(LocalDate.of(2024,02,6), PageRequest.of(0,5));
 
-	 	 System.out.println("Total Element " + b1.getTotalElements());
-		 System.out.println("Size " + b1.getSize());
-		 System.out.println("Total number of element " + b1.getNumberOfElements());
+		System.out.println("Total Element " + b1.getTotalElements());
+		System.out.println("Size " + b1.getSize());
+		System.out.println("Total number of element " + b1.getNumberOfElements());
 
-		 b1.getContent().forEach(b -> System.out.println("Name " + b.getName()));
+		b1.getContent().forEach(b -> System.out.println("Name " + b.getName()));
 
-		 System.out.println("-----Pagination - Author");
-		 Page<Author> a = authorRepository.findByBookNumbers( 15, PageRequest.of(0, 8));
-		 System.out.println("Total Elements " + a.getTotalElements());
-		 System.out.println("Total size " + a.getSize());
-		 System.out.println("Content " + a.getContent());
-			a.getContent().forEach(aut -> System.out.println("Author name " + aut.getName()));
+		System.out.println("-----Pagination - Author");
+		Page<Author> a = authorRepository.findByBookNumbers( 15, PageRequest.of(0, 8));
+		System.out.println("Total Elements " + a.getTotalElements());
+		System.out.println("Total size " + a.getSize());
+		System.out.println("Content " + a.getContent());
+		a.getContent().forEach(aut -> System.out.println("Author name " + aut.getName()));
 
 
-		 System.out.println("\n----------------- Borrow Repository -------------\n");
-		 //System.out.println(bookRepository);
+		System.out.println("\n----------------- Borrow Repository -------------\n");
+		//System.out.println(bookRepository);
 
-		 List<Borrow> borrows1 = borrowRepository.findAll();
+		List<Borrow> borrows1 = borrowRepository.findAll();
 
-		 borrows1.forEach(borrow -> System.out.println(borrow.getStatus()));
+		borrows1.forEach(borrow -> System.out.println(borrow.getStatus()));
 
-		 borrows1.forEach(borrow -> System.out.println(borrow.getBorrowDate()));
+		borrows1.forEach(borrow -> System.out.println(borrow.getBorrowDate()));
 
 //		 borrows1.forEach(borrow -> System.out.println(borrow.getBooks()));
 
-	 }
+	}
 
 
 
