@@ -36,8 +36,8 @@ public class BorrowDto {
     @NotNull
     private Status status;
 
-    @NotNull
-    private List<BookDto> books;
+//    @NotNull
+//    private List<BookDto> books;
 
     @NotNull
     private Users user;
