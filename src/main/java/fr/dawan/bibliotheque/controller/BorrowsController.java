@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -48,6 +49,33 @@ public class BorrowsController {
         return borrowService.addBorrow(borrowDto);
     }
 
+    @PutMapping(value = "/updateBorrow")
+    public BorrowDto updateBorrow(@RequestBody BorrowDto updateBorrow){
+
+        return borrowService.updateBorrow(updateBorrow);
+    }
+
+    /*
+    example of json request body
+    {
+    "id" : 4,
+    "borrowDate": "2024-02-10",
+    "borrowReturnDate": "2025-02-11",
+    "status" : "BORROWED",
+    "user" :
+        {
+            "id" : 2,
+            "name" : "U-2",
+            "firstName" : "T-2",
+            "dateOfBirth" : "2025-02-13",
+            "Email" : "hghgy@jhj.vkj",
+            "adress" : "1 rue de one charles de apple",
+            "phoneNumber" : "0124505054255",
+            "isAnAdult" : true
+        }
+
+}
+     */
     @DeleteMapping(value = "/delete-borrow/{id}")
     public String deleteById(@PathVariable long id) {
         borrowService.deleteById(id);

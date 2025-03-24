@@ -65,5 +65,8 @@ public class BorrowServiceImpl implements IBorrowService{
         }
     }
 
+    public BorrowDto updateBorrow(BorrowDto borrowDto) {
+        return borrowDto;
+    }
 
 }
