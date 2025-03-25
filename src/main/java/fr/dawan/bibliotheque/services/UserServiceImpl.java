@@ -29,8 +29,17 @@ public class UserServiceImpl implements IUserService {
         return users;
     }
 
+    @Override
+    @Transactional
     public List<Users> getAll() {
         List<Users> users = userRepository.findAll();
         return userRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public List<Users> getByName(String name) {
+        List<Users> users = userRepository.findByNameLike(name + "%");
+        return users;
     }
 }

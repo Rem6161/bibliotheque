@@ -10,4 +10,6 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<Users, Long> {
 
     List<Users> findByDateOfBirth(LocalDate localDate);
+
+    List<Users> findByNameLike(String name);
 }

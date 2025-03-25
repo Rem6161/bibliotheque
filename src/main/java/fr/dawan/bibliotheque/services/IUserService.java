@@ -10,4 +10,6 @@ public interface IUserService {
     Users getById(long id);
 
     List<Users> getAll();
+
+    List<Users> getByName(String name);
 }
