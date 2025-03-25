@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @Slf4j
 
 @RestController
@@ -26,7 +28,14 @@ public class UserController {
 
     // Find user by id
     @GetMapping(value = "/user-by-id/{id:[0-4]}")
-    public Users userDto(@PathVariable Long id) {
+    public Users users(@PathVariable Long id) {
         return userService.getById(id);
+    }
+
+    // get all
+
+    @GetMapping(value = "user-find-all")
+    public List<Users> getAll() {
+        return userService.getAll();
     }
 }
