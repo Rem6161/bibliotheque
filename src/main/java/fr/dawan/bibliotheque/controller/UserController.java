@@ -34,8 +34,13 @@ public class UserController {
 
     // get all
 
-    @GetMapping(value = "user-find-all")
+    @GetMapping(value = "/users-find-all")
     public List<Users> getAll() {
         return userService.getAll();
+    }
+
+    @GetMapping(value = "/{name:[A-Za-z]+}")
+    public List<Users> getByName(@PathVariable String name) {
+        return userService.getByName(name); //exemple "Dubois"
     }
 }
