@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import java.util.List;
+
 @Service
 @Validated
 @Transactional
@@ -25,5 +27,10 @@ public class UserServiceImpl implements IUserService {
     public Users getById(long id) {
         Users users = userRepository.findById(id).get();
         return users;
+    }
+
+    public List<Users> getAll() {
+        List<Users> users = userRepository.findAll();
+        return userRepository.findAll();
     }
 }
