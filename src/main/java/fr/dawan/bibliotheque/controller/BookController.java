@@ -34,7 +34,7 @@ public class BookController {
 	// find a book by id
 	@GetMapping(value = "/{id:[0-4]}", produces =MediaType.APPLICATION_JSON_VALUE)
 	 public BookDto getById(
-		@Parameter(description = "L``id de la marque", required = true)
+		@Parameter(description = "L``id de book", required = true)
 		 @PathVariable long id) {
 		 return bookService.getById(id);
 
