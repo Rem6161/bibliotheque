@@ -51,6 +51,17 @@ public class Author extends BaseEntity {
 	
 	@Column(name = "number_of_books", nullable = false)
 	private int bookNumbers;
+
+	public Author(String firstName, LocalDate dateOfBirth, String name, String nationality, String description, int bookNumbers) {
+		this.firstName = firstName;
+		this.dateOfBirth = dateOfBirth;
+		this.name = name;
+		this.nationality = nationality;
+		this.description = description;
+		this.bookNumbers = bookNumbers;
+	}
+//	public Author(String name, String firstName, String dateOfBirth, String nationality, String description, String bookNumbers) {
+//	}
 /*
 	@OneToMany(mappedBy = "author")//,  cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Book> books;

@@ -4,17 +4,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.dawan.bibliotheque.dtos.AuthorDto;
 import fr.dawan.bibliotheque.entities.Author;
 import fr.dawan.bibliotheque.services.IAuthorService;
-import fr.dawan.bibliotheque.services.IBookService;
-import org.springframework.http.MediaType;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.multipart.MultipartFile;
 
 @Slf4j
 
@@ -65,5 +65,16 @@ public class AuthorController {
     public String deleteById(@PathVariable long id) {
         authorService.deleteById(id);
         return "l'Id " + id + "est supprimé";
+    }
+
+    @PostMapping(value = "/add-authors")
+    public ResponseEntity<String> uploadAuthors(@RequestParam("file")MultipartFile file) {
+        System.out.println("Testing api");
+        try {
+            authorService.saveAuthorsFromCSV(file);
+            return ResponseEntity.ok("Authors uploaded !");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Error: " + e.getMessage());
+        }
     }
 }
