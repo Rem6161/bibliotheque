@@ -13,6 +13,7 @@ import fr.dawan.bibliotheque.dtos.BookDto;
 import fr.dawan.bibliotheque.entities.Book;
 import fr.dawan.bibliotheque.repositories.BookRepository;
 import jakarta.validation.Valid;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface IAuthorService {
 
@@ -28,6 +29,8 @@ public interface IAuthorService {
 	AuthorDto updateAuthor(AuthorDto authorDto);
 
 	void deleteById(long id);
+
+	void saveAuthorsFromCSV(MultipartFile file);
 
 	/*
 

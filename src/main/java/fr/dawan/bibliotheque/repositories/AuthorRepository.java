@@ -20,4 +20,5 @@ public interface AuthorRepository extends JpaRepository<Author, Long> {
     Page<Author> findByBookNumbers(int bookNumbers, Pageable page);
 
 
+    boolean existsByName(String name);
 }
