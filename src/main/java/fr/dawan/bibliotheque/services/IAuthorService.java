@@ -32,16 +32,5 @@ public interface IAuthorService {
 
 	void saveAuthorsFromCSV(MultipartFile file);
 
-	/*
 
-     Page<AuthorDto> getAll(Pageable page);
-    List<AuthorDto> getByName(String name);
-    
-    void deleteById(long id);
-    
-    AuthorDto create(@Valid  AuthorDto dto);
-    
-    AuthorDto update(@Valid  AuthorDto dto,long id);
-    *
-    */
 }

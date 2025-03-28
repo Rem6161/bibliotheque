@@ -53,17 +53,9 @@ public class UserController {
 
     // update user
 
-//    @PutMapping (value = "/update")//, consumes = "application/json", produces = "application/json")
-//    public UserDto updateUser(@RequestBody UserDto updateUser) throws IOException {
-//        //log.info("Updating summary for book with id " + updateUser.getId());
-//        //BookDto dto = bookService.getById(updateBook.getId());
-//       // log.info("New summary = " + updateUser.getSummary());
-//        //dto.setSummary(updateBook.getSummary());
-//        return updateUser.update(updateUser);
-//
-//    }
+
     @PutMapping(value = "/update-user")
-    public UserDto updateUser(@RequestBody @Valid UserDto userDto) {
+    public UserDto updateUser(@RequestBody UserDto userDto) {
 
         System.out.println("Test api");
         return userService.updateUser(userDto);
