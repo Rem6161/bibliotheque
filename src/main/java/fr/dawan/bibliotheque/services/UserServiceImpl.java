@@ -44,14 +44,8 @@ public class UserServiceImpl implements IUserService {
         return users;
     }
 
-    @Override
-    @Transactional
-    public void deleteById(long id) {
-        if(userRepository.removeById(id) == 0) {
-            throw new IdNotFoundException();
-        }
-    }
 
+    @Override
     public UserDto addUser(UserDto userDto) {
         Users users = userMapper.toEntity(userDto);
 
@@ -62,4 +56,22 @@ public class UserServiceImpl implements IUserService {
 
         return resultUser;
     }
+
+    @Override
+    @Transactional
+    public UserDto updateUser(UserDto userDto) {
+        Users users = userRepository.findById(userDto.getId()).orElseThrow(()
+                -> new IdNotFoundException(userDto.getId() + " not found"));
+        userMapper.update(userDto, users);
+        return userMapper.toDto(userRepository.save(users));
+    }
+    @Override
+    @Transactional
+    public void deleteById(long id) {
+        if(userRepository.removeById(id) == 0) {
+            throw new IdNotFoundException();
+        }
+    }
+
+
 }

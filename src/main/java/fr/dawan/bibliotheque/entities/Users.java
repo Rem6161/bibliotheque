@@ -37,7 +37,7 @@ public class Users extends BaseEntity {
 	private LocalDate dateOfBirth;
 	
 	@Column(unique = true, nullable = false)
-	private String Email;
+	private String email;
 	
 	@Column(nullable = false, length = 255)
 	private String adress;

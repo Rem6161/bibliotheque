@@ -16,4 +16,8 @@ public interface IUserService {
     void deleteById(long id);
 
     UserDto addUser (UserDto userDto);
+
+    UserDto updateUser(UserDto userDto);
+
+//    UserDto update(UserDto userDto);
 }
