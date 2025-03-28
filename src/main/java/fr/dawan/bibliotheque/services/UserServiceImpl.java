@@ -51,4 +51,15 @@ public class UserServiceImpl implements IUserService {
             throw new IdNotFoundException();
         }
     }
+
+    public UserDto addUser(UserDto userDto) {
+        Users users = userMapper.toEntity(userDto);
+
+        Users savedUser = userRepository.saveAndFlush(users);
+
+        UserDto resultUser = userMapper.toDto(savedUser);
+
+
+        return resultUser;
+    }
 }

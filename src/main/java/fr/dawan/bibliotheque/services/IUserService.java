@@ -14,4 +14,6 @@ public interface IUserService {
     List<Users> getByName(String name);
 
     void deleteById(long id);
+
+    UserDto addUser (UserDto userDto);
 }
