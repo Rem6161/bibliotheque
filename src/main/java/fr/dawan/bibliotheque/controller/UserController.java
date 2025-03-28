@@ -5,10 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.dawan.bibliotheque.dtos.UserDto;
 import fr.dawan.bibliotheque.entities.Users;
 import fr.dawan.bibliotheque.services.IUserService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @Slf4j
@@ -41,14 +43,31 @@ public class UserController {
         return userService.getByName(name); //exemple "Dubois"
     }
 
-
     // Add a user
 
-    @PostMapping(value = "add-user")
+    @PostMapping(value = "/add-user")
     public UserDto addUser(@RequestBody UserDto userDto) {
         return userService.addUser(userDto);
     }
 
+
+    // update user
+
+//    @PutMapping (value = "/update")//, consumes = "application/json", produces = "application/json")
+//    public UserDto updateUser(@RequestBody UserDto updateUser) throws IOException {
+//        //log.info("Updating summary for book with id " + updateUser.getId());
+//        //BookDto dto = bookService.getById(updateBook.getId());
+//       // log.info("New summary = " + updateUser.getSummary());
+//        //dto.setSummary(updateBook.getSummary());
+//        return updateUser.update(updateUser);
+//
+//    }
+    @PutMapping(value = "/update-user")
+    public UserDto updateUser(@RequestBody @Valid UserDto userDto) {
+
+        System.out.println("Test api");
+        return userService.updateUser(userDto);
+    }
     // Deleting a user
 
     @DeleteMapping(value = "/delete-user/{id}")
