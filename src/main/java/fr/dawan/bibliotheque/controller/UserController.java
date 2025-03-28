@@ -42,6 +42,13 @@ public class UserController {
     }
 
 
+    // Add a user
+
+    @PostMapping(value = "add-user")
+    public UserDto addUser(@RequestBody UserDto userDto) {
+        return userService.addUser(userDto);
+    }
+
     // Deleting a user
 
     @DeleteMapping(value = "/delete-user/{id}")

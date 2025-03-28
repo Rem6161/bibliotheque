@@ -56,7 +56,7 @@ public class BookController {
 	@PostMapping(value = "/add")
 	public BookDto addBook(@RequestBody BookDto bookDto) {
 
-		System.out.println(bookDto);
+		//System.out.println(bookDto);
 		return bookService.addBook(bookDto);
 
 	}
