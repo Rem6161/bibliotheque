@@ -54,11 +54,6 @@ public class BookServiceImpl implements IBookService {
 		}
 	}
 
-	@Override
-	public BookDto create(@Valid BookDto bDto) {
-
-		return bookMapper.toDto(bookRepository.save(bookMapper.toEntity(bDto)));
-	}
 
 	@Override
 	public BookDto update(BookDto bDto) {
@@ -90,9 +85,5 @@ public class BookServiceImpl implements IBookService {
 
 	}
 
-	@Override
-	public BookDto updateBook(Long id, BookDto bookDto) {
-		return bookDto;
-	}
 
 }

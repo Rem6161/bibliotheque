@@ -67,7 +67,16 @@ public class BorrowServiceImpl implements IBorrowService{
 
     @Override
     public BorrowDto updateBorrow(BorrowDto borrowDto) {
-        return borrowDto;
+        Borrow borrow = borrowRepository.findById(borrowDto.getId()).orElseThrow(
+                () -> new IdNotFoundException(borrowDto.getId() + "Not found0"));
+        borrowMapper.update(borrowDto, borrow);
+        return borrowMapper.toDto(borrowRepository.save(borrow));
     }
 
 }
+
+
+
+
+
+

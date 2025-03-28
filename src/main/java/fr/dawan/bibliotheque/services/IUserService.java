@@ -19,5 +19,5 @@ public interface IUserService {
 
     UserDto updateUser(UserDto userDto);
 
-//    UserDto update(UserDto userDto);
+
 }
