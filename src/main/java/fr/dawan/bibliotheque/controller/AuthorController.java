@@ -67,9 +67,9 @@ public class AuthorController {
         return "l'Id " + id + "est supprimé";
     }
 
+    // Adding multiple authors at once with importing a csv file
     @PostMapping(value = "/add-authors")
     public ResponseEntity<String> uploadAuthors(@RequestParam("file")MultipartFile file) {
-        System.out.println("Testing api");
         try {
             authorService.saveAuthorsFromCSV(file);
             return ResponseEntity.ok("Authors uploaded !");

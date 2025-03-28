@@ -1,19 +1,7 @@
 name,firstName,dateOfBirth,nationality,description,bookNumbers
-Brown,Charlie,1978-11-02,Canadian,Historical Novelist,7
-Johnson,Emily,1982-03-10,Australian,Poet and Essayist,2
-Williams,Michael,1975-09-21,American,Crime Writer,8
-Jones,Olivia,1995-06-30,British,Travel Blogger and Author,4
-Miller,James,1988-12-05,Canadian,Science Fiction Author,6
-Davis,Sarah,1992-01-16,Australian,Romance Author,3
-García,Antonio,1980-04-10,Spanish,Philosopher and Author,10
-Martínez,Luis,1984-08-25,Mexican,Non-fiction Author,12
-Wilson,Mary,1990-05-17,American,Self-help Author,3
-Moore,David,1973-02-19,British,Historical Fiction,5
-Taylor,Linda,1986-07-13,Australian,Mystery Author,9
-Anderson,Thomas,1993-10-22,American,Young Adult Author,7
-Thomas,Patricia,1981-12-11,Canadian,Political Author,4
-Jackson,William,1994-04-05,Irish,Fantasy Writer,6
-White,Jessica,1979-03-15,American,Children's Book Author,5
-Harris,Paul,1987-09-23,British,Tech Writer,8
-Martin,Barbara,1989-11-30,Australian,Biographer,4
-Garcia,Samuel,1996-01-07,Spanish,Adventure Author,3
+Shahid1,KHAN,2000-05-02,Afghan,Hello World,10
+Shahid2,KHAN,2000-05-02,Afghan,Hello World,10
+Shahid3,KHAN,2000-05-02,Afghan,Hello World,10
+Shahid4,KHAN,2000-05-02,Afghan,Hello World,10
+Shahid5,KHAN,2000-05-02,Afghan,Hello World,10
+Shahid6,KHAN,2000-05-02,Afghan,Hello World,10
