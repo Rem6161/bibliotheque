@@ -12,4 +12,6 @@ public interface IUserService {
     List<Users> getAll();
 
     List<Users> getByName(String name);
+
+    void deleteById(long id);
 }

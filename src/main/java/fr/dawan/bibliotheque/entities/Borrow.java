@@ -6,13 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import fr.dawan.bibliotheque.enums.Status;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode.Exclude;
 import lombok.Getter;
@@ -46,7 +40,7 @@ public class Borrow extends BaseEntity {
 //	@Exclude
 //	private Set<Book> books = new HashSet<>();
 	
-	@ManyToOne
+	@ManyToOne//(fetch = FetchType.EAGER)
 	@Exclude
 	private Users user;
 	

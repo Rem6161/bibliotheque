@@ -12,4 +12,6 @@ public interface UserRepository extends JpaRepository<Users, Long> {
     List<Users> findByDateOfBirth(LocalDate localDate);
 
     List<Users> findByNameLike(String name);
+
+    int removeById(long id);
 }

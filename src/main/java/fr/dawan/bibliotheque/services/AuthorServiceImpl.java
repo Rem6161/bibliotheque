@@ -16,7 +16,6 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -113,7 +112,7 @@ public class AuthorServiceImpl implements IAuthorService {
                 String bookNumbers = line[5].trim();
 
                 if(!authorRepository.existsByName(name)) {
-                    //localdate to format real - date of birth and book numbers
+                    //localdate and int from string to format real - date of birth and book numbers
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                     LocalDate formattedDateOfBirth = LocalDate.parse(dateOfBirth.trim(), formatter);
 
@@ -130,6 +129,4 @@ public class AuthorServiceImpl implements IAuthorService {
         }
 
     }
-//return AuthorDto("Upload successful");
-
 }
